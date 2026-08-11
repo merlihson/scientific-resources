@@ -21,22 +21,21 @@
         <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
     </dict>
 
-    <!-- Twice weekly: Tuesday + Thursday, 08:00 with hourly retries until 12:00.
-         Retries protect against transient failures (no network on wake, RSS
-         flaking); last_run.txt makes a retry an instant no-op once the run's
-         digest has shipped. Weekday: 2=Tuesday, 4=Thursday. -->
+    <!-- Every ~5 days: days 1, 6, 11, 16, 21, 26 at 08:00. ONE slot per run day.
+         NO hourly retry slots — a failed run (no network, API error) waits for
+         the next scheduled slot rather than retrying. Repeated retries after a
+         broken dedup guard are what caused the Aug-2026 overspend. Re-running
+         early is a human decision: python3 -m news_scout.news_scout --force
+         A hard ceiling of 6 runs / trailing 7 days is enforced in the script
+         itself (MAX_RUNS_PER_WEEK), covering every trigger path and machine. -->
     <key>StartCalendarInterval</key>
     <array>
-        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>11</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>11</integer><key>Minute</key><integer>0</integer></dict>
-        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>6</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>11</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>16</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>21</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Day</key><integer>26</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>0</integer></dict>
     </array>
 
     <!-- RunAtLoad disabled: with a twice-weekly schedule it would otherwise fire

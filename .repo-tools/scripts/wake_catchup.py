@@ -352,12 +352,14 @@ def catch_up_agents():
     else:
         logger.info("Catch-up: paper_recommender is up to date.")
 
-    # news_scout: Monday + Thursday
-    if _missed_scheduled_run(ns_last, {0, 3}):
-        logger.info("Catch-up: news_scout missed its last scheduled run — running.")
-        run_module("news_scout.news_scout", "news_scout", extra_args=["--skip-delay"], timeout=1200)
-    else:
-        logger.info("Catch-up: news_scout is up to date.")
+    # news_scout: NO auto catch-up, by explicit instruction (2026-08-11).
+    # A news_scout run costs ~$4-5, and auto-recovery of missed runs is what
+    # turned a broken git sync into repeated full runs. A missed slot now waits
+    # for the next scheduled one; re-running is a human decision:
+    #   cd .repo-tools/scripts && python3 -m news_scout.news_scout --force
+    if not ns_last.exists() or _missed_scheduled_run(ns_last, {0, 3}):
+        logger.info("news_scout looks overdue — NOT auto-running (cost guard); "
+                    "run it manually with --force if you want a digest now.")
 
 
 def main():

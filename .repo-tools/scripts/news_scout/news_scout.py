@@ -30,7 +30,7 @@ import socket
 import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Set
 
@@ -47,6 +47,10 @@ REPO_ROOT = SCRIPT_DIR.parents[2]
 CONFIG_FILE = SCRIPT_DIR / "config.yaml"
 LAST_RUN_FILE = SCRIPT_DIR / "last_run.txt"
 LEDGER_FILE = REPO_ROOT / ".repo-tools" / "logs" / "news_scout_ledger.json"
+# Git-tracked log of every run start, one ISO date per line. Feeds the weekly
+# cap below, so the ceiling holds across ALL machines and trigger paths.
+RUN_LOG_FILE = SCRIPT_DIR / "run_log.txt"
+MAX_RUNS_PER_WEEK = 6
 
 
 # ---------- config ----------
@@ -104,6 +108,47 @@ def already_ran_today() -> bool:
 
 def mark_ran_today() -> None:
     LAST_RUN_FILE.write_text(datetime.now().strftime("%Y-%m-%d"))
+
+
+def _recent_run_dates(days: int = 7) -> list[str]:
+    """Run-start dates logged within the trailing `days` window."""
+    if not RUN_LOG_FILE.exists():
+        return []
+    cutoff = datetime.now() - timedelta(days=days)
+    out = []
+    for line in RUN_LOG_FILE.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            if datetime.strptime(line[:10], "%Y-%m-%d") >= cutoff:
+                out.append(line)
+        except ValueError:
+            continue
+    return out
+
+
+def weekly_cap_reached() -> bool:
+    """HARD ceiling: never more than MAX_RUNS_PER_WEEK runs in a trailing 7 days.
+
+    Enforced in code rather than only in the launchd schedule, because the
+    July/August overspend happened when the schedule-level guards failed and
+    retry slots fired repeatedly. Applies to --force too; only the explicit
+    --override-cap flag (a human typing it) bypasses this."""
+    recent = _recent_run_dates(7)
+    if len(recent) >= MAX_RUNS_PER_WEEK:
+        print(f"Weekly cap reached: {len(recent)} runs in the last 7 days "
+              f"(max {MAX_RUNS_PER_WEEK}). Not running. "
+              f"Use --override-cap to bypass deliberately.")
+        return True
+    return False
+
+
+def log_run_start() -> None:
+    """Record this run BEFORE doing any paid work, so a crash mid-run still
+    counts against the cap."""
+    with open(RUN_LOG_FILE, "a") as f:
+        f.write(datetime.now().strftime("%Y-%m-%d %H:%M") + "\n")
 
 
 def check_remote_last_run() -> bool:
@@ -188,15 +233,18 @@ def main() -> None:
     parser.add_argument("--force", action="store_true", help="Ignore last_run and ledger")
     parser.add_argument("--skip-delay", action="store_true", help="Skip machine_id delay slot")
     parser.add_argument("--lookback", type=int, default=None, help="Hours to look back (overrides config)")
+    parser.add_argument("--override-cap", action="store_true",
+                        help="Bypass the weekly run cap (deliberate, human-typed only)")
     args = parser.parse_args()
 
     config = load_config()
 
-    # Mon-Fri only. Sat/Sun skip. Monday lookback covers the weekend.
-    weekday = datetime.now().weekday()  # 0=Mon ... 6=Sun
-    if weekday in (5, 6) and not args.force and not args.dry_run:
-        print("Weekend — news_scout runs Mon-Fri only. Skipping.")
+    # HARD weekly ceiling — checked before anything else and before any paid
+    # work. Applies even to --force; only --override-cap bypasses it.
+    if not args.dry_run and not args.override_cap and weekly_cap_reached():
         return
+
+    weekday = datetime.now().weekday()  # 0=Mon ... 6=Sun
 
     if not args.force and not args.dry_run and already_ran_today():
         print("Already ran today. Use --force to re-run.")
@@ -223,11 +271,13 @@ def main() -> None:
             mark_ran_today()
             return
 
+    # Count this run against the weekly cap before spending anything.
+    if not args.dry_run:
+        log_run_start()
+
     api_key = resolve_api_key(config)
-    # Monday absorbs the Sat+Sun gap → 72h lookback. Tue-Fri stay on the configured window.
-    default_lookback = int(config.get("lookback_hours", 36))
-    monday_lookback = int(config.get("monday_lookback_hours", 72))
-    lookback = args.lookback or (monday_lookback if weekday == 0 else default_lookback)
+    # Cadence is every ~5 days, so one lookback window covers the whole gap.
+    lookback = args.lookback or int(config.get("lookback_hours", 144))
     top_n = int(config.get("top_n", 7))
     ranker_model = config.get("ranker_model", "claude-haiku-4-5-20251001")
     coverage_model = config.get("coverage_model", "claude-sonnet-4-6")
