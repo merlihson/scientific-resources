@@ -328,7 +328,7 @@ The repository migrated from manual metadata updates to automated git hooks:
 
 ---
 
-**Last Updated:** August 28, 2026
+**Last Updated:** August 31, 2026
 **Automation Status:** ✅ Fully Automated via Git Hook
 **Coverage:** 612/612 reviews (100%)
 **Repository:** https://github.com/merlihson/scientific-resources
