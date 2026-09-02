@@ -5,7 +5,7 @@
 <br>
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
-[![Last Updated](https://img.shields.io/badge/Updated-August_2026-success.svg)](#)
+[![Last Updated](https://img.shields.io/badge/Updated-September_2026-success.svg)](#)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](METADATA_UPDATE_PROCESS.md)
 
 **Your one-stop knowledge base for AI/ML research, learning, and reference**
