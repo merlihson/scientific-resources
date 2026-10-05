@@ -198,7 +198,7 @@
     <!-- Box 3: Size -->
     <g transform="translate(115, 0)">
       <rect x="-85" y="-35" width="170" height="70" rx="10" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
-      <text x="0" y="-5" text-anchor="middle" font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="700" fill="#3fb950">1,463 PDFs</text>
+      <text x="0" y="-5" text-anchor="middle" font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="700" fill="#3fb950">1,496 PDFs</text>
       <text x="0" y="20" text-anchor="middle" font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="11" fill="#8b949e" letter-spacing="1">13 GB RESOURCES</text>
     </g>
 

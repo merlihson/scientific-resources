@@ -31,7 +31,7 @@
 <sub>From ML basics to<br>quantum computing</sub>
 </td>
 <td align="center" width="25%">
-<h3>🎯 1,463 PDFs</h3>
+<h3>🎯 1,496 PDFs</h3>
 <b>Resources</b><br>
 <sub>13 GB of books,<br>cheat sheets & more</sub>
 </td>
@@ -68,7 +68,7 @@
 This repository is a **curated knowledge base** for AI/ML researchers, students, and practitioners. It contains:
 
 - **612 comprehensive paper reviews** covering cutting-edge AI/ML research (2022-2026)
-- **23 learning categories** with 1,463 PDFs spanning machine learning, mathematics, algorithms, and more
+- **23 learning categories** with 1,496 PDFs spanning machine learning, mathematics, algorithms, and more
 - **14 research presentations** on deep learning architectures
 - **Searchable metadata indices** for quick paper discovery
 - **Python tooling** for document processing and automation
@@ -132,7 +132,7 @@ The core collection containing **612 individual paper reviews** in multiple form
 
 ### `learning-materials/`
 
-**22 specialized categories** with 1,463 PDFs (13 GB) of educational resources:
+**22 specialized categories** with 1,496 PDFs (13 GB) of educational resources:
 
 <table>
 <tr>
@@ -388,7 +388,7 @@ For detailed documentation, see [.repo-tools/scripts/README.md](.repo-tools/scri
 | **English Reviews (Markdown)** | 245 files |
 | **Reviews with Paper Links** | 610 (100% coverage!) |
 | **Daily Reviews** | 209 (May 2024 - Feb 2026) |
-| **Learning Material PDFs** | 1,463 |
+| **Learning Material PDFs** | 1,496 |
 | **Learning Categories** | 23 |
 | **Presentations** | 14 |
 | **Total Repository Size** | ~17 GB |
@@ -421,7 +421,7 @@ scientific-resources/
 │       ├── old-docx/                # Old batch DOCX files
 │       └── archive-reviews/         # Legacy individual PDFs
 │
-├── learning-materials/              # Educational resources (13 GB, 1,463 PDFs)
+├── learning-materials/              # Educational resources (13 GB, 1,496 PDFs)
 │   ├── machine learning/            # 14 subcategories, 293 PDFs
 │   ├── math/                        # 25 subcategories, 307 PDFs
 │   ├── programming/                 # 17 subcategories, 85 PDFs
@@ -455,7 +455,7 @@ scientific-resources/
 - **Quick Reference**: Searchable metadata for rapid paper discovery
 
 ### Students
-- **Structured Learning**: 22 categories with 1,463 PDFs of educational materials
+- **Structured Learning**: 22 categories with 1,496 PDFs of educational materials
 - **Academic Writing**: Examples of comprehensive paper reviews
 - **Interview Prep**: 32+ resources for ML/DS interviews
 - **Practical Skills**: Programming, SQL, data engineering tutorials
