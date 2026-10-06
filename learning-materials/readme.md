@@ -4,23 +4,23 @@ A comprehensive collection of **1,496 PDFs** (13 GB) of educational resources, t
 
 ## 📁 Directory Structure
 
-### 🤖 Artificial Intelligence & Machine Learning (293 PDFs)
+### 🤖 Artificial Intelligence & Machine Learning (536 PDFs)
 - **ai/**: Core AI concepts and myth-busting resources
 - **machine learning/**: 14 subcategories covering:
-  - `broad ml materials/` (132) — general ML textbooks and references
-  - `deep neural nets/` (52) — deep learning architectures and theory
-  - `ML concepts, algorithms and machinery/` (45) — scikit-learn, causal inference, recommender systems
-  - `reinforcement learning/` (17) — RL theory and applications
-  - `nlp/` (16) — NLP, LLMs, language models
+  - `broad ml materials/` (259) — general ML textbooks and references
+  - `deep neural nets/` (74) — deep learning architectures and theory
+  - `ML concepts, algorithms and machinery/` (53) — scikit-learn, causal inference, recommender systems
+  - `reinforcement learning/` (21) — RL theory and applications
+  - `nlp/` (50) — NLP, LLMs, language models
   - `cheat sheets/` (8) — quick reference guides
-  - `conformal prediction/` (6) — uncertainty quantification
-  - `time series/` (6) — forecasting and temporal analysis
-  - `genAI/` (5) — TensorFlow, Keras, generative frameworks
+  - `conformal prediction/` (5) — uncertainty quantification
+  - `time series/` (7) — forecasting and temporal analysis
+  - `genAI/` (18) — TensorFlow, Keras, generative frameworks
   - `building ml models/`, `fairness ml/`, `courses/`, `applicative ML/`
 - **surveys/**: Academic survey papers on cutting-edge topics
 
-### 🔢 Mathematics (307 PDFs)
-- **math/**: 25 subcategories including:
+### 🔢 Mathematics (559 PDFs)
+- **math/**: 27 subcategories including:
   - `probability & stats/` — Bayesian, Markov, foundations
   - `just beautiful math/` — classic math collections
   - `linear algebra/` — vectors, matrices, applications
@@ -30,21 +30,21 @@ A comprehensive collection of **1,496 PDFs** (13 GB) of educational resources, t
   - `complex analysis/`, `functional analysis/`, `number theory/`, and more
 - **algorithms/**: Data structures, algorithms, and computational methods
 
-### 👁️ Computer Vision & Image Processing (18 PDFs)
+### 👁️ Computer Vision & Image Processing (23 PDFs)
 - **computer science/computer vision/**: CV algorithms, OpenCV, image processing, action recognition
 
-### 💻 Programming & Development (135 PDFs)
+### 💻 Programming & Development (193 PDFs)
 - **programming/**: 17 subcategories including Python, R & Scala, PyTorch, TensorFlow, scikit-learn, Git, software design, and more
-- **python-ml-math/**: Integrated Python resources for mathematical and ML applications (48 PDFs)
+- **python-ml-math/**: Integrated Python resources for mathematical and ML applications (47 PDFs)
 
-### 📊 Data Science & Engineering (31 PDFs)
+### 📊 Data Science & Engineering (76 PDFs)
 - **data engineering/**: Data processing, Spark, Kafka, big data pipelines
 - **data science applications/**: Real-world applications and use cases
 - **sql/**: Database querying and management
 - **visualisation/**: Data visualization techniques and tools
 
 ### 🏢 Professional & Industry
-- **interview preparation/**: 29 technical interview resources
+- **interview preparation/**: 30 technical interview resources
 - **MLOps/**: Machine learning operations and deployment
 - **kubernetes/**: Container orchestration and cloud deployment
 - **excel/**: Spreadsheet analysis and business intelligence
@@ -117,7 +117,7 @@ See `repos/book_repos.md` for the full list of source repos and download status.
 
 - **Total PDFs**: 1,496 across 22 top-level categories
 - **Total Size**: 13 GB
-- **Key Areas**: Mathematics (323), Machine learning (301), Computer vision (18), Programming (135), Data science (31), Finance (3+)
+- **Key Areas**: Mathematics (559), Machine learning (536), Computer vision (23), Programming (193), Data science (76), Finance (5)
 - **Resource Types**: PDFs, textbooks, reference materials, cheat sheets
 - **Coverage**: Foundational to advanced topics across multiple disciplines
 

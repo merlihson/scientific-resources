@@ -139,12 +139,12 @@ The core collection containing **612 individual paper reviews** in multiple form
 <td width="50%">
 
 #### Core AI/ML
-- `machine learning/` - 14 subcategories (293 PDFs)
-  - Broad ML materials (132)
-  - Deep neural nets (52)
-  - ML concepts & algorithms (45)
-  - Reinforcement learning (17)
-  - NLP (16)
+- `machine learning/` - 14 subcategories (518 PDFs)
+  - Broad ML materials (259)
+  - Deep neural nets (74)
+  - ML concepts & algorithms (53)
+  - Reinforcement learning (21)
+  - NLP (50)
   - Conformal prediction, time series, GenAI, and more
 - `ai/` - General AI concepts
 
@@ -152,7 +152,7 @@ The core collection containing **612 individual paper reviews** in multiple form
 <td width="50%">
 
 #### Mathematics & CS
-- `math/` - 25 subcategories (307 PDFs)
+- `math/` - 27 subcategories (511 PDFs)
   - Probability & stats, linear algebra, optimization
   - Analysis, abstract algebra, physics, calculus
   - Combinatorics, topology, game theory, and more
@@ -167,11 +167,11 @@ The core collection containing **612 individual paper reviews** in multiple form
 <td>
 
 #### Programming & Tools
-- `programming/` - 17 subcategories (85 PDFs)
+- `programming/` - 17 subcategories (146 PDFs)
   - Python, R & Scala, PyTorch, TensorFlow, scikit-learn
   - Software design, Git, NumPy, pandas, and more
-- `python-ml-math/` - Integrated tutorials (48 PDFs)
-- `data engineering/` - Pipelines & processing (29 PDFs)
+- `python-ml-math/` - Integrated tutorials (47 PDFs)
+- `data engineering/` - Pipelines & processing (50 PDFs)
 - `MLOps/` - ML operations
 - `kubernetes/` - Container orchestration
 - `sql/` - Database queries
@@ -422,11 +422,11 @@ scientific-resources/
 │       └── archive-reviews/         # Legacy individual PDFs
 │
 ├── learning-materials/              # Educational resources (13 GB, 1,496 PDFs)
-│   ├── machine learning/            # 14 subcategories, 293 PDFs
-│   ├── math/                        # 25 subcategories, 307 PDFs
-│   ├── programming/                 # 17 subcategories, 85 PDFs
-│   ├── python-ml-math/              # Math for ML & DS, 48 PDFs
-│   ├── data engineering/            # Pipelines & processing, 29 PDFs
+│   ├── machine learning/            # 14 subcategories, 518 PDFs
+│   ├── math/                        # 27 subcategories, 511 PDFs
+│   ├── programming/                 # 17 subcategories, 146 PDFs
+│   ├── python-ml-math/              # Math for ML & DS, 47 PDFs
+│   ├── data engineering/            # Pipelines & processing, 50 PDFs
 │   ├── algorithms/                  # Data structures & algorithms
 │   ├── interview preparation/       # Career resources
 │   ├── repos/                       # Book source repos tracking
